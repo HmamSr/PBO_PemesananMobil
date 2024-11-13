@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+//oooo
 public class DataMobilPanel extends JPanel {
 
     private static final int ROWS_PER_PAGE = 1; // Jumlah baris per halaman
