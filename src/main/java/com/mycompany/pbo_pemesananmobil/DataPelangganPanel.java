@@ -12,8 +12,11 @@ import java.util.List;
 
 public class DataPelangganPanel extends JPanel {
 
+<<<<<<< HEAD
     private static final int ROWS_PER_PAGE = 5;
     private int currentPage = 1;
+=======
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     private List<Object[]> allData;
     private DefaultTableModel model;
     private JTable table;
@@ -47,10 +50,13 @@ public class DataPelangganPanel extends JPanel {
         });
 
         add(new JScrollPane(table), BorderLayout.CENTER);
+<<<<<<< HEAD
 
         // Tambahkan panel untuk pagination
         JPanel paginationPanel = createPaginationPanel();
         add(paginationPanel, BorderLayout.SOUTH);
+=======
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     }
 
     public void fetchAndDisplayData() {
@@ -68,7 +74,11 @@ public class DataPelangganPanel extends JPanel {
                 });
             }
 
+<<<<<<< HEAD
             displayPage(1);
+=======
+            updateTableData();
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
             System.out.println("Data pelanggan berhasil dimuat, jumlah data: " + allData.size());
 
         } catch (SQLException e) {
@@ -77,6 +87,7 @@ public class DataPelangganPanel extends JPanel {
         }
     }
 
+<<<<<<< HEAD
     private void displayPage(int pageNumber) {
         model.setRowCount(0); // Hapus data sebelumnya dari model tabel
         int start = (pageNumber - 1) * ROWS_PER_PAGE;
@@ -110,6 +121,13 @@ public class DataPelangganPanel extends JPanel {
         paginationPanel.add(btnNext);
 
         return paginationPanel;
+=======
+    private void updateTableData() {
+        model.setRowCount(0);
+        for (Object[] rowData : allData) {
+            model.addRow(rowData);
+        }
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     }
 
     public boolean hasData() {

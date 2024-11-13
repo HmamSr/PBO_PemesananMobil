@@ -9,11 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 //Y
 public class DataMobilPanel extends JPanel {
 
     private static final int ROWS_PER_PAGE = 1; // Jumlah baris per halaman
     private int currentPage = 1; // Halaman saat ini
+=======
+
+public class DataMobilPanel extends JPanel {
+
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     private List<Object[]> allData;
     private DefaultTableModel model;
     private JTable table;
@@ -22,9 +28,13 @@ public class DataMobilPanel extends JPanel {
     public DataMobilPanel() {
         setLayout(new BorderLayout());
         dbManager = DatabaseManager.getInstance();
+<<<<<<< HEAD
         model = new DefaultTableModel(new String[]{
                 "ID", "Foto Mobil", "Nama Mobil", "Tipe Mobil", "Tahun Mobil", "Plat Nomer", "Harga Sewa per Hari", "Status Mobil", "Created At"
         }, 0) {
+=======
+        model = new DefaultTableModel(new String[]{"ID", "Foto Mobil", "Nama Mobil", "Tipe Mobil", "Tahun Mobil", "Plat Nomer", "Harga Sewa per Hari", "Status Mobil", "Created At"}, 0) {
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Nonaktifkan edit langsung di tabel
@@ -34,10 +44,13 @@ public class DataMobilPanel extends JPanel {
 
         fetchAndDisplayData();
 
+<<<<<<< HEAD
         // Tambahkan panel untuk pagination
         JPanel paginationPanel = createPaginationPanel();
         add(paginationPanel, BorderLayout.SOUTH);
 
+=======
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
         // Tambahkan MouseListener untuk mendeteksi klik dua kali pada baris
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -73,7 +86,11 @@ public class DataMobilPanel extends JPanel {
                 });
             }
 
+<<<<<<< HEAD
             displayPage(1); // Tampilkan halaman pertama
+=======
+            updateTableData();
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
             System.out.println("Data mobil berhasil dimuat, jumlah data: " + allData.size());
 
         } catch (SQLException e) {
@@ -82,6 +99,7 @@ public class DataMobilPanel extends JPanel {
         }
     }
 
+<<<<<<< HEAD
     private void displayPage(int pageNumber) {
         model.setRowCount(0); // Hapus data sebelumnya dari model tabel
         int start = (pageNumber - 1) * ROWS_PER_PAGE;
@@ -115,13 +133,28 @@ public class DataMobilPanel extends JPanel {
         paginationPanel.add(btnNext);
 
         return paginationPanel;
+=======
+   private void updateTableData() {
+        model.setRowCount(0);
+        for (Object[] rowData : allData) {
+            model.addRow(rowData);
+        }
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     }
 
     public boolean hasData() {
         return allData != null && !allData.isEmpty();
     }
 
+<<<<<<< HEAD
     public void refreshData() {
         fetchAndDisplayData();
     }
+=======
+    // Tambahkan metode refreshData untuk memperbarui tabel setelah edit
+    public void refreshData() {
+        fetchAndDisplayData();
+    }
+    
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
 }

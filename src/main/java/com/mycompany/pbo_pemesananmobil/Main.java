@@ -10,7 +10,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+<<<<<<< HEAD
 
+=======
+//kjhjhkjh
+>>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
 public class Main extends JFrame {
 
     private JPanel contentArea;
