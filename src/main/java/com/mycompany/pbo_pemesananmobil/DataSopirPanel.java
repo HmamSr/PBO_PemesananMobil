@@ -12,11 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class DataSopirPanel extends JPanel {
 
-<<<<<<< HEAD
-    private static final int ROWS_PER_PAGE = 5; // Number of rows per page
+    private static final int ROWS_PER_PAGE = 5; // Jumlah baris per halaman
     private int currentPage = 1;
-=======
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     private List<Object[]> allData;
     private DefaultTableModel model;
     private JTable table;
@@ -32,27 +29,18 @@ public class DataSopirPanel extends JPanel {
             }
         };
         table = new JTable(model);
-<<<<<<< HEAD
         add(new JScrollPane(table), BorderLayout.CENTER);
-
-        // Add MouseListener to detect double-clicks on a row
-=======
 
         fetchAndDisplayData();
 
         // Tambahkan MouseListener untuk mendeteksi klik dua kali pada baris
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && table.getSelectedRow() != -1) {  // Double-click
                     int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());
                     Object[] rowData = allData.get(selectedRow);
-<<<<<<< HEAD
-                    int sopirId = (int) rowData[0];  // Get Sopir ID
-=======
                     int sopirId = (int) rowData[0];  // Ambil ID sopir
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
                     JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(DataSopirPanel.this);
                     if (parentFrame != null) {
                         new EditSopirDialog(parentFrame, sopirId, rowData, DataSopirPanel.this).setVisible(true);
@@ -63,15 +51,9 @@ public class DataSopirPanel extends JPanel {
             }
         });
 
-<<<<<<< HEAD
-        fetchAndDisplayData();
-
-        // Add pagination panel
+        // Tambahkan panel untuk pagination
         JPanel paginationPanel = createPaginationPanel();
         add(paginationPanel, BorderLayout.SOUTH);
-=======
-        add(new JScrollPane(table), BorderLayout.CENTER);
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     }
 
     public void fetchAndDisplayData() {
@@ -91,11 +73,7 @@ public class DataSopirPanel extends JPanel {
                 });
             }
 
-<<<<<<< HEAD
-            displayPage(1); // Display the first page
-=======
-            updateTableData();
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
+            displayPage(1); // Tampilkan halaman pertama
             System.out.println("Data sopir berhasil dimuat, jumlah data: " + allData.size());
 
         } catch (SQLException e) {
@@ -104,9 +82,8 @@ public class DataSopirPanel extends JPanel {
         }
     }
 
-<<<<<<< HEAD
     private void displayPage(int pageNumber) {
-        model.setRowCount(0); // Clear previous data from the table model
+        model.setRowCount(0); // Hapus data sebelumnya dari model tabel
         int start = (pageNumber - 1) * ROWS_PER_PAGE;
         int end = Math.min(start + ROWS_PER_PAGE, allData.size());
 
@@ -138,29 +115,21 @@ public class DataSopirPanel extends JPanel {
         paginationPanel.add(btnNext);
 
         return paginationPanel;
-=======
+    }
+
     private void updateTableData() {
         model.setRowCount(0);
         for (Object[] rowData : allData) {
             model.addRow(rowData);
         }
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
     }
 
     public boolean hasData() {
         return allData != null && !allData.isEmpty();
     }
 
-<<<<<<< HEAD
-    // Method to refresh data after an edit
-    public void refreshData() {
-        fetchAndDisplayData();
-    }
-}
-=======
     // Tambahkan metode refreshData untuk memperbarui tabel setelah edit
     public void refreshData() {
         fetchAndDisplayData();
     }
 }
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf

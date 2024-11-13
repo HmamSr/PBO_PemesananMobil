@@ -10,11 +10,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-<<<<<<< HEAD
 
-=======
-//kjhjhkjh
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
 public class Main extends JFrame {
 
     private JPanel contentArea;
@@ -31,6 +27,7 @@ public class Main extends JFrame {
     private JMenuBar menuBar;
 
     public Main() {
+
         setTitle("Aplikasi Pemesanan Mobil");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -138,7 +135,7 @@ public class Main extends JFrame {
         // Ganti menu dinamis ke "Tambah Mobil" saat berada di Data Mobil
         switchToMenu(tambahMobilMenu);
     }
-    
+
     private void showDataSopir() {
         contentArea.removeAll();
         contentArea.add(dataSopirPanel, BorderLayout.CENTER);
@@ -156,7 +153,7 @@ public class Main extends JFrame {
     private void openAddMobilDialog() {
         new AddMobilDialog(this, dataMobilPanel).setVisible(true);
     }
-    
+
      private void openAddSopirDialog() {
         new AddSopirDialog(this, dataSopirPanel).setVisible(true);
     }

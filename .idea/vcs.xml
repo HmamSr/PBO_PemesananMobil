@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="GitSharedSettings">
-    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
-      <list>
-        <option value="main" />
-      </list>
-    </option>
-  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-=======
-  <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/PBO_PemesananMobil" vcs="Git" />
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
   </component>
 </project>

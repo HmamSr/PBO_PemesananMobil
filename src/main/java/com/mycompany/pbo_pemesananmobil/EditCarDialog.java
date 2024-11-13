@@ -5,11 +5,7 @@ import java.awt.*;
 import java.sql.SQLException;
 
 public class EditCarDialog extends JDialog {
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f76b55a9c07f9cd97b816e5d3219c4f07405bcf
+    
    private JTextField fotoMobilField;
     private JTextField namaMobilField;
     private JTextField tipeMobilField;
