@@ -12,7 +12,7 @@ import java.util.List;
 //Y
 public class DataMobilPanel extends JPanel {
 
-    private static final int ROWS_PER_PAGE = 1; // Jumlah baris per halaman
+    private static final int ROWS_PER_PAGE = 2; // Jumlah baris per halaman
     private int currentPage = 1; // Halaman saat ini
     private List<Object[]> allData;
     private DefaultTableModel model;

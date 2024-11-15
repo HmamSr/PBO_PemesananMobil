@@ -2,8 +2,6 @@ package com.mycompany.pbo_pemesananmobil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,31 +25,22 @@ public class LoginPage extends JDialog {
         button1.addActionListener(e -> {
             String username = textField1.getText();
             String password = new String(passwordField1.getPassword());
-            System.out.println("Username: " + username);
-            System.out.println("Password: " + password);
-        });
+            Admin admin = getAuthenticatedUser(username, password);
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String userName = textField1.getText();
-                String password = String.valueOf(passwordField1.getPassword());
-
-                Admin admin = getAuthenticatedUser(userName, password);
-                if (admin != null) {
-                    JOptionPane.showMessageDialog(LoginPage.this, "Login berhasil! Selamat datang, " + admin.getNama());
-                    dispose();  // Menutup dialog setelah login berhasil
-                } else {
-                    JOptionPane.showMessageDialog(LoginPage.this, "Login gagal! Username atau password salah.");
-                }
+            if (admin != null) {
+                JOptionPane.showMessageDialog(LoginPage.this, "Login berhasil! Selamat datang, " + admin.getNama());
+                dispose(); // Tutup dialog login
+                SwingUtilities.invokeLater(() -> new Main().setVisible(true)); // Buka jendela utama
+            } else {
+                JOptionPane.showMessageDialog(LoginPage.this, "Login gagal! Username atau password salah.");
             }
         });
 
         setVisible(true);
     }
 
-    // Mendefinisikan kelas Admin untuk menyimpan informasi dari tabel admin
-    public class Admin {
+    // Definisi kelas Admin
+    public static class Admin {
         private int id;
         private String username;
         private String nama;
@@ -69,33 +58,25 @@ public class LoginPage extends JDialog {
         public String getNama() {
             return nama;
         }
-
-        // Anda dapat menambahkan getter lain jika diperlukan
     }
 
-    // Metode untuk autentikasi user dari database MySQL
+    // Metode untuk autentikasi
     private Admin getAuthenticatedUser(String username, String password) {
         Admin admin = null;
 
-        // Ubah URL, username, dan password sesuai dengan database Anda
         String url = "jdbc:mysql://localhost:3306/sewa_mobil";
-        String dbUsername = "root";  // Sesuaikan dengan database Anda
-        String dbPassword = "";      // Sesuaikan dengan password database Anda
+        String dbUsername = "root"; // Sesuaikan
+        String dbPassword = "";     // Sesuaikan
 
-        // SQL untuk mengambil pengguna berdasarkan username dan password
         String sql = "SELECT id, username, nama, email, level FROM admin WHERE username = ? AND password = ?";
 
         try (Connection conn = DriverManager.getConnection(url, dbUsername, dbPassword);
              PreparedStatement statement = conn.prepareStatement(sql)) {
 
-            // Set parameter untuk query
             statement.setString(1, username);
             statement.setString(2, password);
-
-            // Eksekusi query
             ResultSet resultSet = statement.executeQuery();
 
-            // Jika data ditemukan, buat objek Admin
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String uname = resultSet.getString("username");
@@ -103,7 +84,6 @@ public class LoginPage extends JDialog {
                 String email = resultSet.getString("email");
                 String level = resultSet.getString("level");
 
-                // Buat objek Admin dengan data dari database
                 admin = new Admin(id, uname, nama, email, level);
             }
 
@@ -116,6 +96,6 @@ public class LoginPage extends JDialog {
     }
 
     public static void main(String[] args) {
-        LoginPage loginPage = new LoginPage(null);
+        new LoginPage(null);
     }
 }
